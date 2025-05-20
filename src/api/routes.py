@@ -40,7 +40,7 @@ def register():
         return jsonify({"success": True})
     except Exception as e:
         print(e)
-        return jsonify({"error": "Something went wrong"}), 500
+        return jsonify({"error": "something went wrong"}), 500
 
 
 @api.route('/login', methods=['POST'])

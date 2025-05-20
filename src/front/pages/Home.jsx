@@ -20,9 +20,9 @@ export const Home = () => {
 			<div className="text-center m-2">
 
 				
-				<h3>For the full experience, please follow these steps</h3>
-				<p>First: <Link to={'/register'}>Register</Link></p>
-				<p>Second: <Link to={'/login'}>Log in</Link></p>
+				<h3>For the full user experience, please follow these steps:</h3>
+				<p>First - <Link to={'/register'}>Register</Link></p>
+				<p>Second - <Link to={'/login'}>Log in</Link></p>
 				<p>Once you're done, you can access your <Link to={'/private'}>private area</Link></p>
 
 			</div>

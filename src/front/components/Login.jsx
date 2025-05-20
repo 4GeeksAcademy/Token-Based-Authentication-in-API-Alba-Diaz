@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
 
-    const navigate = useNavigate('/private')
+    const navigate = useNavigate()
+    const [error, setError] = useState("")
 
     const [formData, setFormData] = useState({
         email: "",
@@ -20,27 +21,34 @@ export const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        setError("")
         userServices.login(formData).then(data => {
             if (data.success) {
-                
-                navigate('/private')
-             
+                navigate('/private');
+            } else {
+                setError("Email/password not valid, try again");
             }
-    })
+   
+        })
 
-}
+    }
 
 
-return (
-  
+    return (
 
-    <form onSubmit={handleSubmit}>
 
-        <input type="email" placeholder="email" value={formData.email} name="email" onChange={handleChange} />
-        <input type="password" placeholder="password" value={formData.password} name="password" onChange={handleChange} />
-        <input type="submit" value="Send" />
+        <form onSubmit={handleSubmit}>
 
-    </form>
-  
-)
+            <input type="email" placeholder="email" value={formData.email} name="email" onChange={handleChange} />
+            <input type="password" placeholder="password" value={formData.password} name="password" onChange={handleChange} />
+            <input type="submit" value="Send" />
+            <div>
+                <p className="d-grid">
+                    {error && <p className="text-black bg-danger m-1 px-2 mx-auto w-auto border rounded">{error}</p>}
+                </p>
+            </div>
+
+        </form>
+
+    )
 }
